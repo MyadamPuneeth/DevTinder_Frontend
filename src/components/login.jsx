@@ -7,10 +7,11 @@ import {BASE_URL} from '../utils/constants'
 
 const Login = () => {
 
-    const [emailId, setEmailId] = useState("Super@gmail.com");
-    const [password, setPassword] = useState("Super@123");
+    const [emailId, setEmailId] = useState("spider@gmail.com");
+    const [password, setPassword] = useState("Spider@123");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [error, setError] = useState("");
 
     const handleLogin = async() => {
         try {
@@ -22,6 +23,7 @@ const Login = () => {
             return navigate("/")
         }
         catch (err){
+            setError(err?.response?.data || "Oops Something went wrong")
             console.log(err.message);
         }
     }
@@ -52,6 +54,7 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
+                    <p className='text-red-500 pl-1 pb-4'>{error}</p>
                     <div className="flex justify-center">
                         <button className="bg-blue-600 hover:bg-blue-800 text-white font-medium py-2 px-4 rounded-lg transition duration-200"
                         onClick={handleLogin}
