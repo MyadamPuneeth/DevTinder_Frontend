@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants'
 
 const Login = () => {
@@ -37,6 +37,7 @@ const Login = () => {
                 {firstName, lastName, emailId, password},
                 {withCredentials:true}
             );
+            setIsLoginForm(true)
         } catch (error) {
             console.error(error)
         }
@@ -52,10 +53,10 @@ const Login = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
                             <input
                                 type="email"
-                                value={emailId}
+                                value={firstName}
                                 placeholder="Type here"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                onChange={(e) => setEmailId(e.target.value)}
+                                onChange={(e) => setFirstName(e.target.value)}
                             />
                         </div>
 
@@ -63,10 +64,10 @@ const Login = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
                             <input
                                 type="email"
-                                value={emailId}
+                                value={lastName}
                                 placeholder="Type here"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                onChange={(e) => setEmailId(e.target.value)}
+                                onChange={(e) => setLastName(e.target.value)}
                             />
                         </div></>}
 
