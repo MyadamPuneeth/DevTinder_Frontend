@@ -8,6 +8,7 @@ import appStore from './utils/appStore';
 import Feed from './components/feed';
 import Profile from './components/profile';
 import Connections from './components/connections';
+import Requests from './components/requests';
 
   function App() {
     const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ import Connections from './components/connections';
                 <Route path='/login' element={<Login />} />
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/connections' element={<Connections />} />
+                <Route path='/requests' element={<Requests />} />
               </Route>
             </Routes>
           </BrowserRouter>

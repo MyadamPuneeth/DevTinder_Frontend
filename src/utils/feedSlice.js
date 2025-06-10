@@ -4,13 +4,17 @@ import feed from "../components/feed";
 const feedSlice = createSlice({
     name: "feed",
     initialState: null,
-    reducers:{
+    reducers: {
         addFeed: (state, action) => {
             return action.payload;
         },
-        removeFeed: (state, action) => null,
+        removeUserFromFeed: (state, action) => {
+            const newArray = state.filter((user) => user._id != action.payload);
+            return newArray;
+        },
+        removeFeed: (state, action) => null
     }
 })
 
-export const {addFeed, removeFeed} = feedSlice.actions;
+export const { addFeed, removeUserFromFeed, removeFeed } = feedSlice.actions;
 export default feedSlice.reducer;
